@@ -2,11 +2,11 @@
 
 ## 1. Genel Bakış
 
-TurkDraw, çizim işlemleri yapabilen Türkçe tabanlı bir Domain Specific Language (DSL) olarak tasarlanmıştır. Dil, iki ana bileşenden oluşur:
+TurkDraw, iki ana bileşenden oluşur:
 - Lexer (`lexer.l`): Kaynak kodu token'lara ayırır
 - Parser (`parser.y`): Token'ları kullanarak sözdizimsel analiz yapar
 
-## 2. Lexer (lexer.l) Detaylı İnceleme
+## 2. Lexer (lexer.l)
 
 ### 2.1 Lexer'ın Çalışma Prensibi
 
@@ -38,7 +38,7 @@ METIN   \"[^\"]*\"
 %%
 ```
 
-## 3. Parser (parser.y) Detaylı İnceleme
+## 3. Parser (parser.y)
 
 ### 3.1 Parser'ın Çalışma Prensibi
 
@@ -46,8 +46,8 @@ Parser, lexer'dan gelen token'ları kullanarak sözdizimsel analiz yapar ve Abst
 
 1. **Token Alımı**: Lexer'dan token'lar alınır
 2. **Gramer Kuralları Uygulanması**: Token'lar gramer kurallarıyla eşleştirilir
-3. **AST Oluşturma**: Eşleşen kurallara göre soyut sözdizim ağacı oluşturulur
 
+Eşleşen kurala göre analiz edilip hata var mı yok mu kontrol edilir.
 ### 3.2 Parser Bileşenleri
 
 ```c
@@ -145,9 +145,7 @@ Bu programın işlenme adımları:
 1. Lexer token'ları üretir
 2. Parser sözdizimsel analiz yapar
 3. Değişken `x` oluşturulur ve değer atanır
-4. Çizim komutları sırayla işlenir
-5. Koşul ifadesi değerlendirilir ve uygun çizim yapılır
+4. Komutlar sırasıyla işlenir.
+5. Koşul ifadesi değerlendirilir ve uygun ifade "yaz" ile print edilir.
 
 ---
-
-Bu doküman, TurkDraw dilinin temel çalışma prensiplerini ve bileşenlerini açıklamaktadır. Dil tasarımı, modern programlama dili konseptlerini Türkçe sözdizimi ile birleştirerek, kullanıcı dostu bir çizim DSL'i oluşturmayı hedeflemektedir.
